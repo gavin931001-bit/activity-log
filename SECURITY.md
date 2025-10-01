@@ -48,4 +48,3 @@ To ensure the security of our wiresense.js library, we use the following tools a
 For further queries or concerns, please contact us via [email](mailto:mail@thedannicraft.de)
 
 Thank you for helping us keep our application secure!
-//nigger
