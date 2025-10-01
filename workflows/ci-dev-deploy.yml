@@ -1,4 +1,3 @@
-
 name: CI Dev Deployment
 
 on:
@@ -7,58 +6,72 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # 讓 workflow 可以 push / create release
+  contents: write   # 允許創建 release 和推送標籤
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      artifact-name: build-artifact
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Set up Node.js (if needed)
+      
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-
+          cache: 'npm'  # 加速 npm install
+      
+      - name: Install dependencies
+        run: npm ci  # 使用 ci 比 install 更適合 CI 環境
+      
       - name: Build
-        run: |
-          npm install
-          npm run build
-          zip -r build.zip .  # 打包成果物
-
+        run: npm run build
+      
+      - name: Create artifact
+        run: zip -r build.zip dist/ node_modules/ package.json  # 只打包必要檔案
+      
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
           path: build.zip
+          retention-days: 7  # 設定保留天數
 
   deploy-dev:
     needs: build
     runs-on: ubuntu-latest
     environment: dev
     steps:
+      - name: Checkout (for gh CLI context)
+        uses: actions/checkout@v4
+      
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
           name: build-artifact
-
-      - name: Install gh CLI
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gh
-
-      - name: Auth gh CLI
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "${GITHUB_TOKEN}" | gh auth login --with-token
-
+      
       - name: Create Dev Release
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: dev-${{ github.run_number }}
-          NOTE: "${{ vars.RELEASE_NOTE || 'Dev automatic release' }}"
+          RELEASE_NOTE: ${{ vars.RELEASE_NOTE || 'Dev automatic release' }}
         run: |
-          gh release create "$TAG" build.zip --notes "$NOTE" || echo "release may already exist"
+          # 檢查 release 是否已存在
+          if gh release view "$TAG" &>/dev/null; then
+            echo "Release $TAG already exists, deleting..."
+            gh release delete "$TAG" --yes
+          fi
+          
+          # 刪除同名 tag (如果存在)
+          git push origin :refs/tags/"$TAG" 2>/dev/null || true
+          
+          # 創建新 release
+          gh release create "$TAG" build.zip \
+            --title "Dev Release #${{ github.run_number }}" \
+            --notes "$RELEASE_NOTE" \
+            --prerelease
+          
+          echo "✅ Release $TAG created successfully"
+
+
+          
