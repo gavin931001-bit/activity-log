@@ -2,7 +2,7 @@ name: Auto Update README
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'src/**'
       - 'dist/**'
