@@ -86,3 +86,4 @@ jobs:
 
           # 建立 release
           gh release create "$TAG" build.zip --notes "${NOTE:-Final production release}"
+
