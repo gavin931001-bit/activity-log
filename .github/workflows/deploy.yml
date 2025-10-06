@@ -1,7 +1,11 @@
 name: CI/CD Deployment Pipeline
 
 on:
-  workflow_dispatch:  # 手動觸發，避免每次 push 都跑全部環境
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -32,6 +36,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
@@ -43,13 +50,23 @@ jobs:
           TAG: ${{ vars.BUILD_TAG }}
           NOTE: ${{ vars.RELEASE_NOTE }}
         run: |
+          # 如果 release 存在就刪掉
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG exists. Deleting..."
+            gh release delete "$TAG" -y
+          fi
+
+          # 建立 release
           gh release create "$TAG" build.zip --notes "${NOTE:-Testing pre-production release}"
 
   deploy-production:
     needs: deploy-staging
     runs-on: ubuntu-latest
-    environment: production  # 有 reviewers 保護
+    environment: production  # 需 reviewers 批准
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
@@ -61,4 +78,11 @@ jobs:
           TAG: ${{ vars.BUILD_TAG }}
           NOTE: ${{ vars.RELEASE_NOTE }}
         run: |
+          # 如果 release 存在就刪掉
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG exists. Deleting..."
+            gh release delete "$TAG" -y
+          fi
+
+          # 建立 release
           gh release create "$TAG" build.zip --notes "${NOTE:-Final production release}"
