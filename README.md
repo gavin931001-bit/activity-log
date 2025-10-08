@@ -17,7 +17,6 @@ A GitHub Action that automatically updates your README file with the latest acti
 - Flexibility with Inputs
 
 ## ✍️ Example
-//chao ni ma
 <!--START_SECTION:activity-->
 1. undefined
 2. 🍴 Forked [TheDanniCraft/activity-log](https://github.com/TheDanniCraft/activity-log)
@@ -169,7 +168,6 @@ You can find an example [here](https://github.com/TheDanniCraft/activity-log/blo
 
 
 
-//hello test 4
 
 
 
