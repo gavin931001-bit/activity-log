@@ -17,7 +17,7 @@ jobs:
       - name: Run Update GitHub Activity
         uses: ./ 
         with:
-          
+          GITHUB_USERNAME: "gavin931001-bit"
           GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
           EVENT_LIMIT: 10
           README_PATH: README.md
