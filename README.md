@@ -19,16 +19,16 @@ A GitHub Action that automatically updates your README file with the latest acti
 ## ✍️ Example
 //chao ni ma
 <!--START_SECTION:activity-->
-1. 📝 Committed to [TheDanniCraft/activity-log](https://github.com/TheDanniCraft/activity-log/commit/9884864a8ddba730c3f4f1c535b554c0b62a6fcc)
-2. ➕ Created a new branch [`master`](https://github.com/TheDanniCraft/endpoints/tree/master) in [TheDanniCraft/endpoints](https://github.com/TheDanniCraft/endpoints)
-3. 🎉 Created a new repository [TheDanniCraft/endpoints](https://github.com/TheDanniCraft/endpoints)
-4. 📝 Committed to [TheDanniCraft/activity-log](https://github.com/TheDanniCraft/activity-log/commit/c155d3a96cb0c040922ae4b62fde40d532410dc3)
-5. 🗑️ Deleted a branch `badge` in [TheDanniCraft/activity-log](https://github.com/TheDanniCraft/activity-log)
-6. 📝 Committed to [TheDanniCraft/activity-log](https://github.com/TheDanniCraft/activity-log/commit/10a09001cb1287b9828a1abe601ebb891e35f29a)
-7. 📝 Committed to [TheDanniCraft/activity-log](https://github.com/TheDanniCraft/activity-log/commit/7257dca32b377eb8fe350dbb7742d6bb49bbbf06)
-8. 📝 Committed to [TheDanniCraft/activity-log](https://github.com/TheDanniCraft/activity-log/commit/6e35f5f8b5c5ce42ce280a43180ab3952d33568c)
-9. ➕ Created a new branch [`badge`](https://github.com/TheDanniCraft/activity-log/tree/badge) in [TheDanniCraft/activity-log](https://github.com/TheDanniCraft/activity-log)
-10. 📝 Committed to [TheDanniCraft/activity-log](https://github.com/TheDanniCraft/activity-log/commit/237fb358147c43aca0f6977fc237af026f20453b)
+1. undefined
+2. 🍴 Forked [TheDanniCraft/activity-log](https://github.com/TheDanniCraft/activity-log)
+3. ❌ Closed an issue [#2](https://github.com/gavin931001-bit/devops20250917/issues/2) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
+4. 🆕 Opened an issue [#3](https://github.com/gavin931001-bit/devops20250917/issues/3) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
+5. 🆕 Opened an issue [#2](https://github.com/gavin931001-bit/devops20250917/issues/2) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
+6. 🆕 Opened an issue [#1](https://github.com/gavin931001-bit/devops20250917/issues/1) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
+7. ➕ Created a new branch [`HW1-8`](https://github.com/gavin931001-bit/devops20250917/tree/HW1-8) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
+8. ➕ Created a new branch [`HW1-15-preorder`](https://github.com/gavin931001-bit/devops20250917/tree/HW1-15-preorder) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
+9. ➕ Created a new branch [`main`](https://github.com/gavin931001-bit/devops20250917/tree/main) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
+10. 🎉 Created a new repository [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
 <!--END_SECTION:activity-->
 
 ## 📖Usage
