@@ -19,15 +19,15 @@ A GitHub Action that automatically updates your README file with the latest acti
 ## ✍️ Example
 <!--START_SECTION:activity-->
 1. undefined
-2. 🍴 Forked [TheDanniCraft/activity-log](https://github.com/TheDanniCraft/activity-log)
-3. ❌ Closed an issue [#2](https://github.com/gavin931001-bit/devops20250917/issues/2) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
-4. 🆕 Opened an issue [#3](https://github.com/gavin931001-bit/devops20250917/issues/3) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
-5. 🆕 Opened an issue [#2](https://github.com/gavin931001-bit/devops20250917/issues/2) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
-6. 🆕 Opened an issue [#1](https://github.com/gavin931001-bit/devops20250917/issues/1) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
-7. ➕ Created a new branch [`HW1-8`](https://github.com/gavin931001-bit/devops20250917/tree/HW1-8) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
-8. ➕ Created a new branch [`HW1-15-preorder`](https://github.com/gavin931001-bit/devops20250917/tree/HW1-15-preorder) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
-9. ➕ Created a new branch [`main`](https://github.com/gavin931001-bit/devops20250917/tree/main) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
-10. 🎉 Created a new repository [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
+2. 🍴 Forked [gavin931001-bit/activity-log](https://github.com/gavin931001-bit/activity-log)
+3. ❌ Closed an issue [#1](https://github.com/gavin931001-bit/devops-readme-update/issues/1) in [gavin931001-bit/devops-readme-update](https://github.com/gavin931001-bit/devops-readme-update)
+4. 📥 Opened [PR #2](https://github.com/gavin931001-bit/devops-readme-update/pull/2) in [gavin931001-bit/devops-readme-update](https://github.com/gavin931001-bit/devops-readme-update)
+5. ➕ Created a new branch [`update-readme`](https://github.com/gavin931001-bit/devops-readme-update/tree/update-readme) in [gavin931001-bit/devops-readme-update](https://github.com/gavin931001-bit/devops-readme-update)
+6. 🆕 Opened an issue [#1](https://github.com/gavin931001-bit/devops-readme-update/issues/1) in [gavin931001-bit/devops-readme-update](https://github.com/gavin931001-bit/devops-readme-update)
+7. ➕ Created a new branch [`main`](https://github.com/gavin931001-bit/devops-readme-update/tree/main) in [gavin931001-bit/devops-readme-update](https://github.com/gavin931001-bit/devops-readme-update)
+8. 🔄 Reopened an issue [#2](https://github.com/gavin931001-bit/devops20250917/issues/2) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
+9. ❌ Closed an issue [#2](https://github.com/gavin931001-bit/devops20250917/issues/2) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
+10. 🆕 Opened an issue [#3](https://github.com/gavin931001-bit/devops20250917/issues/3) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
 <!--END_SECTION:activity-->
 
 ## 📖Usage
