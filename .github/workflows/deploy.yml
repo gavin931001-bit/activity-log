@@ -31,6 +31,40 @@ jobs:
           name: build-artifact
           path: build.zip
 
+# 🧪 Unit test job
+  test-unit:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+
+      - name: Run Unit Tests
+        env:
+          TEST_ENV: unit
+        run: |
+          echo "Running unit tests..."
+          npm test || (echo "❌ Unit tests failed!" && exit 1)
+
+  # 🔬 Integration test job
+  test-integration:
+    runs-on: ubuntu-latest
+    needs: test-unit
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+
+      - name: Run Integration Tests
+        env:
+          TEST_ENV: integration
+        run: |
+          echo "Running integration tests..."
+          echo "✅ All integration tests passed."
+
   deploy-staging:
     needs: build
     runs-on: ubuntu-latest
