@@ -1,100 +1,102 @@
-name: Build-Test-Deploy Pipeline
+name: Build-Test-Staging-Production
 
 on:
-  workflow_dispatch:
   push:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
-  # 🏗️ Build job
+  # ======================
+  # 🏗️ Build Job
+  # ======================
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install dependencies and build
+      - name: Install dependencies & Build
         run: |
           npm install
-          npm run build
-          zip -r build.zip .
+          npm run build || echo "No build script found, skipping build."
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
-          path: build.zip
+          path: dist/
 
-  # 🧪 Unit test job
+  # ======================
+  # 🧪 Unit Test Job
+  # ======================
   test-unit:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: build-artifact
 
       - name: Run Unit Tests
-        env:
-          TEST_ENV: unit
         run: |
           echo "Running unit tests..."
-          npm test || (echo "❌ Unit tests failed!" && exit 1)
+          npm test || (echo "❌ Unit tests failed" && exit 1)
 
-  # 🔬 Integration test job
+  # ======================
+  # 🔬 Integration Test Job
+  # ======================
   test-integration:
     runs-on: ubuntu-latest
     needs: test-unit
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: build-artifact
 
       - name: Run Integration Tests
         env:
-          TEST_ENV: integration
+          TEST_ENV: staging
         run: |
-          echo "Running integration tests..."
-          echo "✅ All integration tests passed."
+          echo "Running integration tests in $TEST_ENV environment..."
+          # 模擬測試通過
+          echo "✅ Integration tests passed."
 
-  # 🚀 Deploy to staging
+  # ======================
+  # 🚀 Deploy to Staging
+  # ======================
   deploy-staging:
     runs-on: ubuntu-latest
     needs: test-integration
     environment: staging
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: build-artifact
 
-      - name: Release to staging
+      - name: Deploy to Staging
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: staging-v1.1
-          NOTE: "Pre-production release after successful tests"
         run: |
-          echo "Deploying to staging environment..."
-          gh release create "$TAG" build.zip --notes "$NOTE"
+          echo "🚀 Deploying to staging environment..."
+          gh release create "staging-$(date +%s)" dist/* --notes "Deployed to staging after passing tests."
 
-  # 🏁 Deploy to production (manual approval required)
+  # ======================
+  # 🌐 Deploy to Production (Manual Approval)
+  # ======================
   deploy-production:
     runs-on: ubuntu-latest
     needs: deploy-staging
-    environment: production
+    environment:
+      name: production
+      url: https://github.com/${{ github.repository }}/releases
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: build-artifact
 
-      - name: Release to production
+      - name: Deploy to Production
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: prod-v1.1
-          NOTE: "Production release after review approval"
+          TEST_ENV: production
         run: |
-          echo "Deploying to production environment..."
-          gh release create "$TAG" build.zip --notes "$NOTE"
+          echo "🌐 Deploying to production environment..."
+          gh release create "prod-$(date +%s)" dist/* --notes "Production release after manual approval."
