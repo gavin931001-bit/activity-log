@@ -26,7 +26,6 @@ A GitHub Action that automatically updates your README file with the latest acti
 6. 🆕 Opened an issue [#1](https://github.com/gavin931001-bit/devops-readme-update/issues/1) in [gavin931001-bit/devops-readme-update](https://github.com/gavin931001-bit/devops-readme-update)
 7. ➕ Created a new branch [`main`](https://github.com/gavin931001-bit/devops-readme-update/tree/main) in [gavin931001-bit/devops-readme-update](https://github.com/gavin931001-bit/devops-readme-update)
 8. 🔄 Reopened an issue [#2](https://github.com/gavin931001-bit/devops20250917/issues/2) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
-9. ❌ Closed an issue [#2](https://github.com/gavin931001-bit/devops20250917/issues/2) in [gavin931001-bit/devops20250917](https://github.com/gavin931001-bit/devops20250917)
 <!--END_SECTION:activity-->
 
 ## 📖Usage
